@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Order Form</title>
+</head>
+<body>
+  <div id="form-container"></div>
+  <script>
+    // Берём первый сегмент пути: instagram или facebook
+    const section = window.location.pathname.split('/')[1];
+    // Указываем только ID ваших форм
+    const forms = {
+      instagram: '251427091561252',
+      facebook:  '251398700380255'
+    };
+    // Если URL не содержит ни «instagram», ни «facebook», по-умолчанию – instagram
+    const formId = forms[section] || forms.instagram;
+    // Динамически создаём и вставляем <script>
+    const s = document.createElement('script');
+    s.src = 'https://form.jotform.com/jsform/' + formId;
+    s.defer = true;
+    document.getElementById('form-container').appendChild(s);
+  </script>
+</body>
+</html>
